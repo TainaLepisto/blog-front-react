@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Info = ({ message }) => {
+const Info = ({ message, type }) => {
   if (message === '') {
     return null
   }
   return (
-    <div className="info">
+    <div className={type}>
       {message}
     </div>
   )
