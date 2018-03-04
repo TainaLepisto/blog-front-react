@@ -29,11 +29,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    blogService.getAll().then(blogs =>
+    blogService.getAll().then((blogs) => {
       this.setState({ blogs })
-    )
+      console.log('getAll sisällä')
+      console.log(blogs)
+    })
 
     console.log('componentDidMount')
+    console.log(this.state.blogs)
 
     const loggedUserJSON = window.localStorage.getItem('loggedUser')
 
@@ -147,20 +150,24 @@ class App extends React.Component {
         />
       </Togglable>
 
+      <h2>Blogs</h2>
+      {this.state.blogs.map(blog =>
+        <Blog key={blog.id} blog={blog} user={this.state.user} />
+      )}
 
     </div>
   )
 
   beforelogin = () => {
     return (
-      <Togglable buttonLabel="login">
-        <LoginForm
-          onSubmit={this.login}
-          valueName={this.state.username}
-          valuePsw={this.state.password}
-          onChange={this.handleFieldChange}
-        />
-      </Togglable>
+      //<Togglable buttonLabel="login">
+      <LoginForm
+        onSubmit={this.login}
+        valueName={this.state.username}
+        valuePsw={this.state.password}
+        onChange={this.handleFieldChange}
+      />
+      //</Togglable>
     )
   }
 
@@ -177,11 +184,6 @@ class App extends React.Component {
           this.beforelogin() :
           this.afterLogin()
         }
-
-        <h2>Blogs</h2>
-        {this.state.blogs.map(blog =>
-          <Blog key={blog.id} blog={blog} user={this.state.user} />
-        )}
 
       </div>
     )

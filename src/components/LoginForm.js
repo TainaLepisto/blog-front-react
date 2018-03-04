@@ -2,7 +2,7 @@ import React from 'react'
 
 const LoginForm = ({ onSubmit, valueName, valuePsw, onChange }) => {
   return (
-    <div>
+    <div className='loginForm'>
       <h2>Sign in</h2>
 
       <form onSubmit={onSubmit}>

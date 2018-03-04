@@ -81,7 +81,7 @@ class Blog extends React.Component {
         <div className="block">
 
           <h3>
-            <a href={placeholder} onClick={this.toggleVisibility}>
+            <a href={placeholder} onClick={this.toggleVisibility} className='toggleVisibility'>
               <span>
                 {this.props.blog.title}
               </span>
@@ -89,13 +89,13 @@ class Blog extends React.Component {
             :: {this.props.blog.author}
           </h3>
 
-          <div style={showWhenVisible}>
-            <p>
+          <div style={showWhenVisible} className="togglableContent">
+            <p className='url'>
               <a href={this.props.blog.url} target="_blank">
                 {this.props.blog.url}
               </a>
             </p>
-            <p>
+            <p className='like'>
               {this.props.blog.likes} likes &nbsp;&nbsp;
               <button onClick={ () => this.liked() }>
                 like
